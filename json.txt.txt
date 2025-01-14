@@ -1,0 +1,164 @@
+JSON
+
+http://localhost:8080/trilha
+{
+    "descricao_trilha" : "Front-end"
+}
+
+http://localhost:8080/curso
+{
+    "descricao_curso": "CSS",
+    "nivel_experiencia": "Iniciante",
+    "tempo_curso": 10,
+    "imagem_curso": "https://worldvectorlogo.com/logo/css-3",
+    "id_trilha": 1
+}
+
+http://localhost:8080/pessoa
+{
+    "nome": "Nadi",
+    "sobrenome": "Duno",
+    "cpf": "123.456.789-10",
+    "data_nascimento": "01-01-1990",
+    "sexo": "femenino",
+    "email": "nadiduno@gmail.com",
+    "senha": "$2y$10$T6hr5DkIeyWl7MG/CV8BuuK4hp5guy86Q2Zq2rTpheM/a0KwjeHcG",
+    "telefone": "(11) 91234-5678",
+    "cep": "01001-000",
+    "bairro": "Centro",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "numero_residencia": "123",
+    "grau_instrucao": "superior completo",
+    "numero_filhos": 0,
+    "situacao_familiar": "solteira",
+    "raca": "parda",
+    "deficiencia": false
+}
+
+http://localhost:8080/administrador
+{
+    "descricao": "ADMIN",
+    "id_pessoa": 1
+}
+
+http://localhost:8080/aula
+{
+    "descricao_aula": "Aula 1",
+    "link_aula": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "id_curso": 1,
+    "id_professor": 1,
+    "materiais_complementares": [
+        "https://www.google.com/docs/example.pdf",
+        "https://github.com/user/repositorio"
+    ]
+}
+
+http://localhost:8080/participante_trilha
+{
+    "data_inicio": "01-01-2023",
+    "nivel_acesso": "administracao",
+    "permissoes": ["editar_conteudo", "gerenciar_alunos"],
+    "id_trilha": 1,
+    "id_pessoa": 1,
+    "tipo_participante": "professor"
+}
+
+
+{
+    "data_inicio": "01-12-2024",
+    "progresso": 50,
+    "nivel_acesso": "leitura",
+    "permissoes": [
+        "visualizar_materias",
+        "fazer_quiz"
+    ],
+    "id_trilha": 1,
+    "id_pessoa": 1,
+    "tipo_participante": "estudante"
+}
+
+
+http://localhost:8080/professor
+
+{
+    "pessoa": {
+        "nome": "Nadi",
+	"sobrenome": "Duno",
+	"cpf": "123.456.789-10",
+	"data_nascimento": "01-01-1990",
+	"sexo": "femenino",
+	"email": "nadiduno@gmail.com",
+	"senha": "$2y$10$T6hr5DkIeyWl7MG/CV8BuuK4hp5guy86Q2Zq2rTpheM/a0KwjeHcG",
+	"telefone": "(11) 91234-5678",
+	"cep": "01001-000",
+	"bairro": "Centro",
+	"cidade": "São Paulo",
+	"estado": "SP",
+	"numero_residencia": "123",
+	"grau_instrucao": "superior completo",
+	"numero_filhos": 0,
+	"situacao_familiar": "solteira",
+	"raca": "parda",
+	"deficiencia": false
+	},
+    "professor": {
+        "data_ingresso_professor": "01-01-2023",
+        "data_atualizacao_professor": "14-01-2025",
+        "observacao": "Mestrado em Ciência de Dados",
+        "id_pessoa": 1,
+        "id_participante_trilha": 1
+    }
+}
+
+********************
+{
+    "data_ingresso_professor": "01-01-2023",
+    "data_atualizacao_professor": "14-01-2025",
+    "observacao": "Mestrado em Ciência de Dados",
+    "id_pessoa": 1,
+    "id_participante_trilha": 1
+}
+
+http://localhost:8080/estudante
+{
+    "renda_familiar": 1500.00,
+    "situacao_social": "refugiado",
+    "computador": true,
+    "internet": true,
+    "data_ingresso_estudante": "01-12-2024",
+    "data_atualizacao_estudante": "14-01-2025",
+    "observacao": "Necessita de tradução dos materiais para o idioma nativo.",
+    "id_pessoa": 123
+}
+
+
+
+pra o front-end - professor
+// Opção 1: Enviando os dados em um único JSON
+fetch('/api/professores', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "pessoa": {
+        // ... dados da pessoa
+    },
+    "professor": {
+        // ... dados do professor
+    }
+  })
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+
+
+
+
+
