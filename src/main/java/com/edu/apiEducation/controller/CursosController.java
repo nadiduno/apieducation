@@ -7,22 +7,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.edu.apiEducation.trilha.CadastrarDadosTrilha;
+import com.edu.apiEducation.cursos.CadastrarDadosCursos;
+
 
 //import trilha.CadastrarDadosTrilha;
 //import trilha.TrilhaService;
 
 @RestController
-@RequestMapping("/trilha")
-public class TrilhaController {
+@RequestMapping("/cursos")
+public class CursosController {
 
 	@GetMapping
-	public String mostarTrilha() {
-		return "Trilhas";
+	public String mostarCursos() {
+		return "Cursos";
 	}
 	
 	@PostMapping
-	public CadastrarDadosTrilha cadastrarTrilha(@RequestBody CadastrarDadosTrilha json) {
+	public CadastrarDadosCursos cadastrarCursos(@RequestBody CadastrarDadosCursos json) {
 		System.out.println(json);
 		return (json);
 	}
