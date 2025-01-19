@@ -1,4 +1,4 @@
-package com.edu.apiEducation.trilha;
+package com.edu.apiEducation.cursos;
 
 public enum DescricaoTrilha {
     FRONT_END,
