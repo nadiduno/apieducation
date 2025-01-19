@@ -12,9 +12,6 @@ import com.edu.apiEducation.cursos.Cursos;
 import com.edu.apiEducation.cursos.CursosRepository;
 
 
-//import trilha.CadastrarDadosTrilha;
-//import trilha.TrilhaService;
-
 @RestController
 @RequestMapping("/cursos")
 public class CursosController {
