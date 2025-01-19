@@ -27,6 +27,7 @@ public class Cursos {
 	private NivelExperiencia nivelExperiencia; 
 	private int tempoCurso;
 	private String imagemCurso; 
+	@Enumerated(EnumType.STRING)
 	private DescricaoTrilha descricao_trilha;
 	
 	public Cursos(CadastrarDadosCursos dados) {
