@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.apiEducation.pessoas.Pessoas;
 import com.edu.apiEducation.pessoas.PessoasRepository;
+
+import jakarta.validation.Valid;
+
 import com.edu.apiEducation.pessoas.CadastrarDadosPessoas;
 
 @RestController
@@ -23,7 +26,7 @@ public class PessoasController {
 	}
 	
 	@PostMapping
-	public CadastrarDadosPessoas cadastrarPessoas(@RequestBody CadastrarDadosPessoas dados) {
+	public CadastrarDadosPessoas cadastrarPessoas(@Valid @RequestBody CadastrarDadosPessoas dados) {
 		repository.save(new Pessoas(dados));
 		return (dados);
 	}

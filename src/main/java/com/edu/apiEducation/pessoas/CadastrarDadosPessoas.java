@@ -21,7 +21,12 @@ public record CadastrarDadosPessoas(
 		SituacaoFamiliar situacaoFamiliar, 
 		Raca raca, 
 		Boolean deficiencia, 
-		TipoDeficiencia tipoDeficiencia
+		TipoDeficiencia tipoDeficiencia,
+		RendaFamiliar rendaFamiliar,
+	    SituacaoSocial situacaoSocial,
+		Boolean computador,
+		Boolean internet,
+		String observacao	
 		) {
 	
 }

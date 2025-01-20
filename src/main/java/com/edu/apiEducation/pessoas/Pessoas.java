@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
-@Table(name = "pessoas")
+@Table(name = "pessoas2")
 @Entity(name = "Pessoas")
 @Getter
 @NoArgsConstructor
@@ -47,6 +47,13 @@ public class Pessoas {
 	private Boolean deficiencia;
 	@Enumerated(EnumType.STRING)
     private TipoDeficiencia tipoDeficiencia;
+	@Enumerated(EnumType.STRING)
+	private RendaFamiliar rendaFamiliar;
+	@Enumerated(EnumType.STRING)
+	private SituacaoSocial situacaoSocial;
+	private Boolean computador;
+	private Boolean internet;
+	private String observacao;
 	
 	public Pessoas(CadastrarDadosPessoas dados) {
 		this.nome = dados.nome();
@@ -68,6 +75,11 @@ public class Pessoas {
 		this.raca = dados.raca();
 		this.deficiencia = dados.deficiencia();
 		this.tipoDeficiencia = dados.tipoDeficiencia();
+		this.rendaFamiliar = dados.rendaFamiliar();
+		this.situacaoSocial = dados.situacaoSocial();
+		this.computador = dados.computador();
+		this.internet = dados.internet();
+		this.observacao = dados.observacao();
 					    
 	}
 	
