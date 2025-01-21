@@ -25,4 +25,11 @@ public class Sexo {
 	public Sexo(CadastrarDadosSexo dados) {
 		this.descricaoSexo = dados.descricaoSexo();
 	}
+	
+	public Sexo() {}
+	
+	public String getDescricaoSexo() {
+		return descricaoSexo;
+	}
+	
 }
