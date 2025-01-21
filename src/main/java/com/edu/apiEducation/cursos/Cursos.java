@@ -1,11 +1,18 @@
 package com.edu.apiEducation.cursos;
 
+import java.time.LocalDate;
+
+import com.edu.apiEducation.nivelExperiencia.NivelExperiencia;
+import com.edu.apiEducation.trilha.Trilha;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -23,19 +30,31 @@ public class Cursos {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idCurso;
 	private String descricaoCurso; 
-	@Enumerated(EnumType.STRING)
-	private NivelExperiencia nivelExperiencia; 
 	private int tempoCurso;
 	private String imagemCurso; 
-	@Enumerated(EnumType.STRING)
-	private DescricaoTrilha descricao_trilha;
+	private String observacao;
+    private Boolean ativo;
+    private LocalDate dataExclusao;
+    private String observacaoExclusao;
+    
+    @ManyToOne
+    @JoinColumn(name = "idTrilha")
+    private Trilha trilha;
+    
+    @ManyToOne
+    @JoinColumn(name = "idNivelExperiencia")
+    private NivelExperiencia nivelExperiencia; 
+	
 	
 	public Cursos(CadastrarDadosCursos dados) {
-		this.descricaoCurso = dados.descricao_curso();
-		this.nivelExperiencia = dados.nivel_experiencia();
-		this.tempoCurso = dados.tempo_curso();
-		this.imagemCurso = dados.imagem_curso();
-		this.descricao_trilha = dados.descricao_trilha();
-		
+		this.descricaoCurso = dados.descricaoCurso();
+		this.tempoCurso = dados.tempoCurso();
+		this.nivelExperiencia = dados.nivelExperiencia();
+		this.imagemCurso = dados.imagemCurso();
+		this.trilha = dados.trilha();
+		this.observacao = dados.observacao();
+		this.ativo = dados.ativo();
+		this.dataExclusao = dados.dataExclusao();
+		this.observacaoExclusao = dados.observacaoExclusao();
 	}
 }

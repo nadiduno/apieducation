@@ -1,11 +1,16 @@
 package com.edu.apiEducation.aulas;
 
 import java.net.URI;
+import java.time.LocalDate;
+
+import com.edu.apiEducation.cursos.Cursos;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -22,18 +27,26 @@ public class Aulas {
 		
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idAula;
+	
 	private String descricaoAula;
-	private URI link_aula;
-	private long idCurso;
-	long idProfessor;
+	private URI linkAula;
 	private String observacao;
+    private Boolean ativo;
+    private LocalDate dataExclusao;
+    private String observacaoExclusao;
+    
+    @ManyToOne
+    @JoinColumn(name = "idCurso")
+    private Cursos curso;
 	
 	public Aulas(CadastrarDadosAulas dados) {
-		this.descricaoAula = dados.descricao_aula();
-		this.link_aula = dados.link_aula();
-		this.idCurso = dados.id_curso();
-		this.idProfessor = dados.id_professor();
+		this.descricaoAula = dados.descricaoAula();
+		this.linkAula= dados.linkAula();
 		this.observacao = dados.observacao();
+		this.ativo = dados.ativo();
+		this.dataExclusao = dados.dataExclusao();
+		this.observacaoExclusao = dados.observacaoExclusao();
+		this.curso = dados.curso();
 	}
-	
+
 }

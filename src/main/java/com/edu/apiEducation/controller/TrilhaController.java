@@ -7,26 +7,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.edu.apiEducation.cursos.CadastrarDadosCursos;
-import com.edu.apiEducation.cursos.Cursos;
-import com.edu.apiEducation.cursos.CursosRepository;
-
+import com.edu.apiEducation.trilha.CadastrarDadosTrilha;
+import com.edu.apiEducation.trilha.Trilha;
+import com.edu.apiEducation.trilha.TrilhaRepository;
 
 @RestController
-@RequestMapping("/cursos")
-public class CursosController {
+@RequestMapping("/trilha")
+public class TrilhaController {
 
 	@Autowired
-	private CursosRepository repository;
+	private TrilhaRepository repository;
 	
 	@GetMapping
-	public String mostarCursos() {
-		return "Cursos";
+	public String mostarTrilha() {
+		return "Trilha";
 	}
 	
 	@PostMapping
-	public CadastrarDadosCursos cadastrarCursos(@RequestBody CadastrarDadosCursos dados) {
-		repository.save(new Cursos(dados));
+	public CadastrarDadosTrilha cadastrarTrilha(@RequestBody CadastrarDadosTrilha dados) {
+		repository.save(new Trilha(dados));
 		return (dados);
 	}
 	 

@@ -1,7 +1,18 @@
 package com.edu.apiEducation.aulas;
 
 import java.net.URI;
+import java.time.LocalDate;
 
-public record CadastrarDadosAulas(String descricao_aula,URI link_aula, long id_curso, long id_professor, String observacao) {
+import com.edu.apiEducation.cursos.Cursos;
+
+public record CadastrarDadosAulas(
+		String descricaoAula,
+		URI linkAula,  
+		String observacao,
+		Boolean ativo,
+	    LocalDate dataExclusao,
+	    String observacaoExclusao,
+	    Cursos curso
+		) {
 
 }

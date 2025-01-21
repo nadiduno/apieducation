@@ -7,27 +7,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.edu.apiEducation.pessoas.Pessoas;
-import com.edu.apiEducation.pessoas.PessoasRepository;
-
-import jakarta.validation.Valid;
-
-import com.edu.apiEducation.pessoas.CadastrarDadosPessoas;
+import com.edu.apiEducation.sexo.CadastrarDadosSexo;
+import com.edu.apiEducation.sexo.Sexo;
+import com.edu.apiEducation.sexo.SexoRepository;
 
 @RestController
-@RequestMapping("/pessoas")
-public class PessoasController {
+@RequestMapping("/sexo")
+public class SexoController {
+
 	@Autowired
-	private PessoasRepository repository;
+	private SexoRepository repository;
 	
 	@GetMapping
-	public String mostarPessoas() {
-		return "Pessoas";
+	public String mostarSexo() {
+		return "Sexo";
 	}
 	
 	@PostMapping
-	public CadastrarDadosPessoas cadastrarPessoas(@Valid @RequestBody CadastrarDadosPessoas dados) {
-		repository.save(new Pessoas(dados));
+	public CadastrarDadosSexo cadastrarSexo(@RequestBody CadastrarDadosSexo dados) {
+		repository.save(new Sexo(dados));
 		return (dados);
 	}
+	 
 }
