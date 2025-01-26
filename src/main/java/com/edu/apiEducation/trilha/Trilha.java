@@ -25,4 +25,10 @@ public class Trilha {
 	public Trilha(CadastrarDadosTrilha dados) {
 		this.descricaoTrilha = dados.descricaoTrilha();
 	}
+	
+	public Trilha() {}
+	
+	public String getDescricaoTrilha() {
+		return descricaoTrilha;
+	}
 }
