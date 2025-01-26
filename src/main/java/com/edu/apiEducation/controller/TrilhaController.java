@@ -1,6 +1,7 @@
 package com.edu.apiEducation.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -20,9 +21,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.edu.apiEducation.trilha.CadastrarDadosTrilha;
 import com.edu.apiEducation.trilha.DadosListagemTrilha;
+import com.edu.apiEducation.trilha.ResourceNotFoundException;
 import com.edu.apiEducation.trilha.Trilha;
 import com.edu.apiEducation.trilha.TrilhaRepository;
+import com.edu.apiEducation.trilha.TrilhaService;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.Data;
 
@@ -32,7 +36,7 @@ public class TrilhaController {
 
 	@Autowired
 	private TrilhaRepository repository;
-	
+		
 	@GetMapping
 	public List<DadosListagemTrilha> listar() {
 	    return repository.findAll().stream()
@@ -45,17 +49,25 @@ public class TrilhaController {
 	public CadastrarDadosTrilha cadastrarTrilha(@RequestBody CadastrarDadosTrilha dados) {
 		repository.save(new Trilha(dados));
 		return (dados);
-	}
+	}	
 	
 	@DeleteMapping("/{id}")
 	@Transactional
-	public String excluirTrilha(@PathVariable Long id) {
-
+	public String  excluirTrilha(@PathVariable Long id) {
 		Logger logger = LoggerFactory.getLogger(TrilhaController.class);
-		repository.deleteById(id);
-		String message = String.format("Trilha %d eliminada com sucesso", id);
-	    logger.info(message);
-	    return message;
+
+	    Optional<Trilha> trilha = repository.findById(id);
+
+	    if (trilha.isPresent()) {
+	        repository.deleteById(id);
+	        String message = String.format("Trilha %d eliminada com sucesso", id);
+	        logger.info(message);
+	        return message;
+	    } else {
+	        String errorMessage = String.format("Trilha %d não encontrada", id);
+	        logger.warn(errorMessage);
+	        return errorMessage;
+	    }
 	}
 	 
 }
